@@ -15,7 +15,7 @@
     "canbus": null
   },
   "encoder": {
-    "type": "talonsrx_analog",
+    "type": "throughbore",
     "id": 10,
     "canbus": null
   },
