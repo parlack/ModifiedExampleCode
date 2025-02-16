@@ -161,8 +161,7 @@ public class RobotContainer
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand(){
-    return Commands.print("No autonomous command configured");
-//    return drivebase.getAutonomousCommand("New Auto");
+  return drivebase.getAutonomousCommand("New Auto");
   }
 
   public void setMotorBrake(boolean brake){
