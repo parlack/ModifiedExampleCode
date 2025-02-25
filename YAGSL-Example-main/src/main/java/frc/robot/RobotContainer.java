@@ -55,15 +55,15 @@ public class RobotContainer
   /**
    * Clone's the angular velocity input stream and converts it to a robotRelative input stream.
    */
-  SwerveInputStream driveRobotOriented = driveAngularVelocity.copy().robotRelative(true)
-                                                             .allianceRelativeControl(false);
+  //SwerveInputStream driveRobotOriented = driveAngularVelocity.copy().robotRelative(true)
+  //                                                           .allianceRelativeControl(false);
 
   SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(drivebase.getSwerveDrive(),
                                                                         () -> driverXbox.getLeftY(),
                                                                         () -> driverXbox.getLeftX())
-                                                                    .withControllerRotationAxis(() -> driverXbox.getRawAxis(
-                                                                        2 ) - driverXbox.getRawAxis(
-                                                                          3))
+                                                                    .withControllerRotationAxis(() -> 
+                                                                                 driverXbox.getRawAxis(2 ) 
+                                                                                 -driverXbox.getRawAxis(3))
                                                                     .deadband(OperatorConstants.DEADBAND)
                                                                     .scaleTranslation(0.8)
                                                                     .allianceRelativeControl(true);
@@ -79,7 +79,7 @@ public class RobotContainer
                                                                                                           () ->
                                                                                                               Math.cos(
                                                                                                                   driverXbox.getRawAxis(
-                                                                                                                      2) *
+                                                                                                                      3) *
                                                                                                                   Math.PI) *
                                                                                                               (Math.PI *
                                                                                                                2))
@@ -106,15 +106,15 @@ public class RobotContainer
   private void configureBindings()
   {
 
-    Command driveFieldOrientedDirectAngle      = drivebase.driveFieldOriented(driveDirectAngle);
+    //Command driveFieldOrientedDirectAngle      = drivebase.driveFieldOriented(driveDirectAngle);
     Command driveFieldOrientedAnglularVelocity = drivebase.driveFieldOriented(driveAngularVelocity);
-    Command driveRobotOrientedAngularVelocity  = drivebase.driveFieldOriented(driveRobotOriented);
-    Command driveSetpointGen = drivebase.driveWithSetpointGeneratorFieldRelative(
-        driveDirectAngle);
+    //Command driveRobotOrientedAngularVelocity  = drivebase.driveFieldOriented(driveRobotOriented);
+    //Command driveSetpointGen = drivebase.driveWithSetpointGeneratorFieldRelative(
+      //  driveDirectAngle);
     Command driveFieldOrientedDirectAngleKeyboard      = drivebase.driveFieldOriented(driveDirectAngleKeyboard);
-    Command driveFieldOrientedAnglularVelocityKeyboard = drivebase.driveFieldOriented(driveAngularVelocityKeyboard);
-    Command driveSetpointGenKeyboard = drivebase.driveWithSetpointGeneratorFieldRelative(
-        driveDirectAngleKeyboard);
+    //Command driveFieldOrientedAnglularVelocityKeyboard = drivebase.driveFieldOriented(driveAngularVelocityKeyboard);
+    //Command driveSetpointGenKeyboard = drivebase.driveWithSetpointGeneratorFieldRelative(
+        //driveDirectAngleKeyboard);
 
     if (RobotBase.isSimulation())
     {
